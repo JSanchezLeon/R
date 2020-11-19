@@ -8,12 +8,12 @@ library(jtools)
 library(qdap)
 library(syuzhet)
 ??get_sentiment
-###Cleant Training Data
+###Clean Training Data
 intdat <- read_excel('Train_data.xlsx')
 
 intdat$Purpose_Of_Loan <- as.factor(intdat$Purpose_Of_Loan)
 
-#Create some new variables
+#Tranform some features
 
 
 intdat$Description_Lenght <- lengths(gregexpr("\\W+", intdat$Loan_Description)) + 1
@@ -32,7 +32,7 @@ intdat.no.outlier <- intdat.no.outlier[-which(intdat.no.outlier$Revolving_Balanc
 intdat.no.outlier$Record <- ifelse(is.na(intdat.no.outlier$Months_Since_Record) == F, 1, 0)
 intdat.no.outlier$`Description?` <- ifelse(is.na(intdat.no.outlier$Loan_Description) == T, 1, 0)
 intdat.no.outlier$Title_Lenght <- lengths(gregexpr("\\W+", intdat.no.outlier$Loan_Title)) + 1
-####KNNN imputation
+####KNNNImputate Missing values using machine learning
 library(DMwR)
 numintdat <- subset(intdat.no.outlier, select = c(Loan_Amount_Requested, Interest_Rate, Length_Employed,
                                                   Annual_Income, Debt_To_Income, Number_Delinqueny_2yrs, 
