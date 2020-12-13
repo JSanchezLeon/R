@@ -32,7 +32,7 @@ intdat.no.outlier <- intdat.no.outlier[-which(intdat.no.outlier$Revolving_Balanc
 intdat.no.outlier$Record <- ifelse(is.na(intdat.no.outlier$Months_Since_Record) == F, 1, 0)
 intdat.no.outlier$`Description?` <- ifelse(is.na(intdat.no.outlier$Loan_Description) == T, 1, 0)
 intdat.no.outlier$Title_Lenght <- lengths(gregexpr("\\W+", intdat.no.outlier$Loan_Title)) + 1
-####KNNNImputate Missing values using machine learning
+###Imputate missing values using knn
 library(DMwR)
 numintdat <- subset(intdat.no.outlier, select = c(Loan_Amount_Requested, Interest_Rate, Length_Employed,
                                                   Annual_Income, Debt_To_Income, Number_Delinqueny_2yrs, 
