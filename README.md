@@ -1,2 +1,2 @@
 # R
-The follopwing R script and dataset have the purpose of cleaning the data and building a predictive model of interest rates on loan applications
+The following R script and dataset have the purpose of cleaning the data and building a predictive model of interest rates on loan applications
